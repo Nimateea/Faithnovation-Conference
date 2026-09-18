@@ -155,4 +155,31 @@ body {
   padding: 0;
   background: #fff;
   font-family: 'Acumin Variable Concept', sans-serif;
+  overflow-x: hidden;
+}
+
+/* The artwork is authored on a 1440px canvas. Keep its proportions intact on
+   smaller screens while scaling the complete composition to the viewport. */
+.page-shell {
+  width: 100%;
+  height: 6269px;
+  overflow: hidden;
+}
+
+.page-canvas {
+  width: 1440px;
+  height: 6269px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1439px) {
+  .page-canvas {
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-spin {
+    animation: none;
+  }
 }

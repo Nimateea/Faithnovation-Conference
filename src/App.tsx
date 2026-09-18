@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const assetPathPrefix = "/assets";
 const imgF7BuildingColumns = `${assetPathPrefix}/490f6.svg`;
@@ -82,6 +82,14 @@ function ScatterIcon({ className }: { className?: string }) {
 export default function App() {
   const badgeRef = useRef<HTMLDivElement>(null);
   const [badgeTilt, setBadgeTilt] = useState({ x: 0, y: 0, active: false });
+  const [canvasScale, setCanvasScale] = useState(1);
+
+  useEffect(() => {
+    const updateCanvasScale = () => setCanvasScale(Math.min(1, window.innerWidth / 1440));
+    updateCanvasScale();
+    window.addEventListener('resize', updateCanvasScale);
+    return () => window.removeEventListener('resize', updateCanvasScale);
+  }, []);
 
   function handleBadgeMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = badgeRef.current;
@@ -105,8 +113,11 @@ export default function App() {
   const [adminOverloadHovered, setAdminOverloadHovered] = useState(false);
   const [aiHovered, setAiHovered] = useState(false);
   return (
-    <div style={{ width: 1440, margin: '0 auto', overflowX: 'clip' }}>
-      <div className="bg-white relative" style={{ width: 1440, height: 6269 }}>
+    <div className="page-shell" style={{ height: `${6269 * canvasScale}px` }}>
+      <div
+        className="page-canvas bg-white relative"
+        style={{ transform: `scale(${canvasScale})`, transformOrigin: 'top left' }}
+      >
 
         {/* Black hero bar */}
         <div className="absolute bg-black h-[382px] left-0 top-0 w-[1440px]" />
