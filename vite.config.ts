@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
 
-import siteConfiguration from './.figma/make/site.json'
-
 // Vite config — https://vitejs.dev/config/
+// The Figma metadata file is not part of the cloned repository, so use the
+// documented defaults until project metadata is provided.
+const siteConfiguration: FigmaSiteConfiguration = {}
 export default defineConfig(({ mode }) => {
   // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
   const emitSourcemaps = mode === 'development'
@@ -31,8 +32,10 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
-      strictPort: true,
+      // Let Vite select the next available port when the configured preview
+      // port is already occupied by another process.
+      port: Number(process.env.PORT) || 8443,
+      strictPort: false,
       watch: {
         ignored: [
           '**/.figma/**',
@@ -41,7 +44,8 @@ export default defineConfig(({ mode }) => {
     },
     preview: {
       host: process.env.FIGMA_DEV_SERVER_HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '8443'),
+      port: Number(process.env.PORT) || 8443,
+      strictPort: false,
     },
   }
 })
