@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,500&family=Blinker:wght@400&family=Montserrat:wght@400&display=swap');
+
+/* ── Acumin Variable Concept — locally installed via Adobe Fonts ───────── */
+@font-face {
+  font-family: 'Acumin Variable Concept';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept';
+  src: local('Acumin Variable Concept Italic'), local('AcuminVariableConcept-Italic'),
+       local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Named aliases used by Tailwind arbitrary-value classes */
+@font-face {
+  font-family: 'Acumin Variable Concept:Wide Semibold';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Wide';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Wide Medium';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Bold';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Regular';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Condensed Medium Italic';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:ExtraCondensed Semibold Italic';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:SemiCondensed UltraBlack Italic';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:ExtraCondensed Black Italic';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:ExtraCondensed ExtraLight';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:ExtraCondensed Italic';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Acumin Variable Concept:Wide Black';
+  src: local('Acumin Variable Concept'), local('AcuminVariableConcept');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Available from Figma font CDN ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Blinker:Regular';
+  src: url('https://static.figma.com/font/Blinker-Regular_1') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque:ExtraLight';
+  src: url('https://static.figma.com/font/BricolageGrotesque_opsz_wdth_wght__1') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque:Medium';
+  src: url('https://static.figma.com/font/BricolageGrotesque_opsz_wdth_wght__1') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque:Regular';
+  src: url('https://static.figma.com/font/BricolageGrotesque_opsz_wdth_wght__1') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat:Regular';
+  src: url('https://static.figma.com/font/Montserrat_wght__2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes spin-cw {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+
+.badge-spin {
+  animation: spin-cw 8s linear infinite;
+  transform-origin: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: 'Acumin Variable Concept', sans-serif;
+}
