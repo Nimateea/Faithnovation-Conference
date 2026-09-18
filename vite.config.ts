@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
 
-import siteConfiguration from './.figma/make/site.json'
-
 // Vite config — https://vitejs.dev/config/
+// The Figma metadata file is not part of the cloned repository, so use the
+// documented defaults until project metadata is provided.
+const siteConfiguration: FigmaSiteConfiguration = {}
 export default defineConfig(({ mode }) => {
   // .figma/make/deploy-preview passes `--mode development` for cached-preview builds.
   const emitSourcemaps = mode === 'development'
